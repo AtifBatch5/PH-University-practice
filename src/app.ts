@@ -1,31 +1,21 @@
-import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
-import { KBRoutes } from './app/modules/KBS/KB.route';
-import { orderRoutes } from './app/modules/Orders/order.route';
+import express, { Application, Request, Response } from 'express';
+import { StudentRoutes } from './app/modules/student/student.route';
+
 const app: Application = express();
 
-// parser
+//parsers
 app.use(express.json());
 app.use(cors());
 
-// application
+// application routes
+app.use('/api/v1/students', StudentRoutes);
 
-app.use('/api/products', KBRoutes);
-app.use('/api/orders', orderRoutes);
-
-const home = (req: Request, res: Response) => {
-  res.send('WOHOOOOO HIIII <33333');
+const getAController = (req: Request, res: Response) => {
+  const a = 10;
+  res.send(a);
 };
 
-app.get('/', home);
-
-
-
-app.all('*', (req, res) => {
-  res.status(400).json({
-    success: false,
-    message: 'route not found',
-  });
-});
+app.get('/', getAController);
 
 export default app;
