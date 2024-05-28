@@ -1,0 +1,12 @@
+{
+  "name": "Corsair K95 RGB Platinum XT",
+  "description": "High-performance mechanical gaming keyboard with per-key RGB lighting and Cherry MX switches.",
+  "price": 199.99,
+  "category": "Electronics",
+  "tags": ["computer", "peripherals", "gaming", "keyboard", "Corsair"],
+  "variants": [
+    { "type": "color", "value": "Black" },
+    { "type": "switch", "value": "Cherry MX Speed" }
+  ],
+  "inventory": { "quantity": 25, "inStock": true }
+}
