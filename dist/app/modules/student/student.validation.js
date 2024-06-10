@@ -43,6 +43,6 @@ exports.studentValidationSchema = zod_1.z.object({
     localGuardian: localGuardianSchema,
     profileImg: zod_1.z.string(),
     isActive: zod_1.z.enum(['active', 'blocked']).default('active'),
-    isDeleted: zod_1.z.boolean().optional().default(false),
+    isDeleted: zod_1.z.boolean().optional(),
 });
 exports.default = exports.studentValidationSchema;
