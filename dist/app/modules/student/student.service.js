@@ -132,6 +132,7 @@ const getAllStudentsFromDB = (query) => __awaiter(void 0, void 0, void 0, functi
   
     */
     const studentQuery = new QueryBuilder_1.default(student_model_1.Student.find()
+        .populate('user')
         .populate('admissionSemester')
         .populate({
         path: 'academicDepartment',
