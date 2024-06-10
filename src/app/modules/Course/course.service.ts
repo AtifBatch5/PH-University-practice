@@ -41,7 +41,6 @@ const updateCourseIntoDB = async (id: string, payload: Partial<TCourse>) => {
 
   try {
     session.startTransaction();
-
     //step1: basic course info update
     const updatedBasicCourseInfo = await Course.findByIdAndUpdate(
       id,
@@ -54,7 +53,7 @@ const updateCourseIntoDB = async (id: string, payload: Partial<TCourse>) => {
     );
 
     if (!updatedBasicCourseInfo) {
-      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course');
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course!');
     }
 
     // check if there is any pre requisite courses to update
@@ -79,7 +78,7 @@ const updateCourseIntoDB = async (id: string, payload: Partial<TCourse>) => {
       );
 
       if (!deletedPreRequisiteCourses) {
-        throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course');
+        throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course!');
       }
 
       // filter out the new course fields
@@ -100,7 +99,7 @@ const updateCourseIntoDB = async (id: string, payload: Partial<TCourse>) => {
       );
 
       if (!newPreRequisiteCourses) {
-        throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course');
+        throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course!');
       }
     }
 
@@ -113,7 +112,6 @@ const updateCourseIntoDB = async (id: string, payload: Partial<TCourse>) => {
 
     return result;
   } catch (err) {
-    console.log(err);
     await session.abortTransaction();
     await session.endSession();
     throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course');
